@@ -3,10 +3,6 @@ import pro1 from "./images/image-product-1.jpg";
 import pro2 from "./images/image-product-2.jpg";
 import pro3 from "./images/image-product-3.jpg";
 import pro4 from "./images/image-product-4.jpg";
-import pro1a from "./images/image-product-1-thumbnail.jpg";
-import pro2a from "./images/image-product-2-thumbnail.jpg";
-import pro3a from "./images/image-product-3-thumbnail.jpg";
-import pro4a from "./images/image-product-4-thumbnail.jpg";
 import next from "./images/icon-next.svg";
 import prev from "./images/icon-previous.svg";
 

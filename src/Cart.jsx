@@ -1,5 +1,5 @@
 import React from "react";
-import pro1 from "./images/image-product-1.jpg";
+
 import deleteIcon from "./images/icon-delete.svg";
 import { Link } from "react-router-dom";
 
