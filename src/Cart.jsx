@@ -21,27 +21,38 @@ const Cart = ({ cart, setCart }) => {
       {cart.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        cart.map((item) => (
-          <div className="cart-info">
-            <div>
-              <img src={item.image} alt="pro1" />
+        cart.map((item) => {
+          console.log(item);
+          return (
+            <div className="cart-info">
               <div>
-                <p>{item.name}</p>
-                <p>
-                  ${item.price} x {item.quantity}{" "}
-                  <div style={{ display: "inline-block", fontWeight: "bold" }}>
-                    {item.price * item.quantity}
-                  </div>
-                </p>
+                <img src={item.image} alt="pro1" />
+                <div>
+                  <p>{item.name}</p>
+                  <p>
+                    ${item.price} x {item.quantity}{" "}
+                    <div
+                      style={{ display: "inline-block", fontWeight: "bold" }}
+                    >
+                      {item.price * item.quantity}
+                    </div>
+                  </p>
+                  <p>{item.color}</p>
+                </div>
+                <img
+                  src={deleteIcon}
+                  onClick={() =>
+                    setCart((prev) => {
+                      const restitems = prev.filter((shoe) => shoe !== item);
+                      return [...restitems];
+                    })
+                  }
+                  alt="delete"
+                />
               </div>
-              <img
-                src={deleteIcon}
-                onClick={() => setCart({ ...cart, empty: true })}
-                alt="delete"
-              />
             </div>
-          </div>
-        ))
+          );
+        })
       )}
       <hr />
       <div>

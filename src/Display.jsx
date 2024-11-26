@@ -10,8 +10,8 @@ import pro4a from "./images/image-product-4-thumbnail.jpg";
 import next from "./images/icon-next.svg";
 import prev from "./images/icon-previous.svg";
 
-const Display = () => {
-  const [current, setCurrent] = useState(pro1);
+const Display = ({ shoe }) => {
+  const [current, setCurrent] = useState(shoe[0]);
 
   const imageList = [pro1, pro2, pro3, pro4];
 
@@ -37,14 +37,25 @@ const Display = () => {
     <div className="photo-side">
       <div>
         <img src={prev} className="prev" alt="prev" onClick={handlePrev} />
-        <img src={current} alt="main-product" className="main-pro" />
+        <img src={current.image} alt="main-product" className="main-pro" />
         <img src={next} className="next" alt="next" onClick={handleNext} />
       </div>
       <div>
-        <img src={pro1a} onClick={() => setCurrent(pro1)} alt="product" />
-        <img src={pro2a} onClick={() => setCurrent(pro2)} alt="product" />
+        {shoe.length > 1 &&
+          shoe
+            .slice(1, shoe.length + 1)
+            .map((shoe, index) => (
+              <img
+                key={index}
+                src={shoe.image}
+                onClick={() => setCurrent(shoe)}
+                alt="product"
+              />
+            ))}
+
+        {/* <img src={pro2a} onClick={() => setCurrent(pro2)} alt="product" />
         <img src={pro3a} onClick={() => setCurrent(pro3)} alt="product" />
-        <img src={pro4a} onClick={() => setCurrent(pro4)} alt="product" />
+        <img src={pro4a} onClick={() => setCurrent(pro4)} alt="product" /> */}
       </div>
     </div>
   );

@@ -7,9 +7,13 @@
   grid-template-columns: repeat(4, minmax(250px, 1fr));
   gap: 2rem;
 }
+.shoe {
+  width: 100%;
+}
 .shoe img {
   height: 10rem;
-  width: 10rem;
+  width: 100%;
+  object-fit: cover;
 }
 
 .shoe-price {
@@ -17,4 +21,10 @@
   box-shadow: 2px 3px 3px grey;
   padding: 0.6rem;
   color: black;
+}
+
+.search {
+  padding: 0.6rem;
+  border-color: rgb(187, 184, 184);
+  border-radius: 4px;
 }

@@ -61,7 +61,7 @@ export function SingleShoe({
               : "container product-container"
           }
         >
-          <Display />
+          <Display shoe={InterstShoe} />
           <div className="text-side">
             <h3>Sneakers</h3>
             <h1>{id}</h1>

@@ -1,18 +1,34 @@
-import GB from "../images/k-black.jpeg";
+import GB from "../images/nike-b.png";
 import fb from "../images/icon-facebook.svg";
 import utube from "../images/icon-youtube.svg";
 import twitter from "../images/icon-twitter.svg";
 import insta from "../images/icon-instagram.svg";
 import logo from "../images/logo.svg";
+import { useEffect, useState } from "react";
 
 export const Landing = ({ shoes }) => {
-  let array = Object.entries(shoes);
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  array = array.slice(0, 3);
-  console.log(array);
+  const [displayedShoes, setDisplayedShoes] = useState([]);
+  const shuffleAndSliceArray = () => {
+    const array = Object.entries(shoes);
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array.slice(0, 3);
+  };
+
+  useEffect(() => {
+    // Initial setting of shoes
+    setDisplayedShoes(shuffleAndSliceArray());
+
+    // Set interval for updating displayed shoes
+    const intervalId = setInterval(() => {
+      setDisplayedShoes(shuffleAndSliceArray());
+    }, 2000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [shoes]);
   return (
     <div>
       <section className="landing">
@@ -21,19 +37,19 @@ export const Landing = ({ shoes }) => {
             Discover the greatest shoe collection at the
             <span>most affordable prices</span>
           </h1>
-          <img src={GB} alt="Gucci" />
+          <img src={GB} alt="Gucci" className="hero-img" />
         </div>
       </section>
       <section className="about_us">
         <div className="container about_con">
           <div className="slider">
-            {array.map(([title, shoe]) => {
+            {displayedShoes.map(([title, shoe]) => {
               return (
                 <article className="slide-shoe">
                   <img src={shoe[0].image} alt="shoe" />
                   <div>
                     <p>{title}</p>
-                    <p>{shoe[0].price}</p>
+                    <p>&#x20A6;{shoe[0].price}</p>
                     <button>buy now</button>
                   </div>
                 </article>

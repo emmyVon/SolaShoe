@@ -6,8 +6,9 @@ import Cart from "../Cart";
 import { ReactComponent as Carticon } from "../images/icon-cart.svg";
 import avater from "../images/image-avatar.png";
 import { Link } from "react-router-dom";
+import { Account } from "../utils/wallet";
 
-export const Navbar = ({ setMenu, Menu, setCart, itemNo, cart }) => {
+export const Navbar = ({ setMenu, Menu, setCart, itemNo, cart, onOpen }) => {
   const [displayCart, setDisplayCart] = useState(false);
 
   const price = 125;
@@ -42,6 +43,9 @@ export const Navbar = ({ setMenu, Menu, setCart, itemNo, cart }) => {
           )}
         </div>
         <div className="nav-right">
+          <div className="wallet" onClick={() => onOpen()}>
+            {Account.checkBalance()}
+          </div>
           <div>
             {cart.length > 0 ? (
               <div className="cart-item">{cart.length}</div>
