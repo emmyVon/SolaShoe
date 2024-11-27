@@ -8,16 +8,16 @@ import { useEffect, useState } from "react";
 
 export const Landing = ({ shoes }) => {
   const [displayedShoes, setDisplayedShoes] = useState([]);
-  const shuffleAndSliceArray = () => {
-    const array = Object.entries(shoes);
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array.slice(0, 3);
-  };
 
   useEffect(() => {
+    const shuffleAndSliceArray = () => {
+      const array = Object.entries(shoes);
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array.slice(0, 3);
+    };
     // Initial setting of shoes
     setDisplayedShoes(shuffleAndSliceArray());
 

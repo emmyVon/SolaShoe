@@ -4,8 +4,8 @@ import deleteIcon from "./images/icon-delete.svg";
 import { Link } from "react-router-dom";
 
 const Cart = ({ cart, setCart }) => {
-  const shipFee = 12;
-  let { amount, items } = cart.reduce(
+  // const shipFee = 12;
+  let { amount } = cart.reduce(
     (total, item) => {
       const { quantity, price } = item;
       total.amount += price * quantity;

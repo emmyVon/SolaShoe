@@ -2,7 +2,7 @@ import React from "react";
 
 export const Checkout = ({ cart }) => {
   const shipFee = 12;
-  let { amount, items } = cart.reduce(
+  let { amount } = cart.reduce(
     (total, item) => {
       const { quantity, price } = item;
       total.amount += price * quantity;

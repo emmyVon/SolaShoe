@@ -7,26 +7,24 @@ const Inventory = ({ shoes }) => {
   const [shoegrp, setShoes] = useState(shoes);
 
   useEffect(() => {
+    const shoeobj = shoes;
     const timeout = setTimeout(() => {
-      handleSearch();
+      if (search) {
+        const searchitems = Object.entries(shoeobj).filter(([brand]) =>
+          brand.toLowerCase().includes(search.toLowerCase())
+        );
+        setShoes(Object.fromEntries(searchitems));
+      } else {
+        setShoes(shoes);
+      }
     }, 300);
     return () => clearTimeout(timeout);
-  }, [search, shoegrp]);
+  }, [search, shoes]);
   const handleinputchange = (e) => {
     setSearch(e.target.value);
   };
   // console.log(shoes);
-  const handleSearch = () => {
-    const shoeobj = shoes;
-    if (search) {
-      const searchitems = Object.entries(shoeobj).filter(([brand]) =>
-        brand.toLowerCase().includes(search.toLowerCase())
-      );
-      setShoes(Object.fromEntries(searchitems));
-    } else {
-      setShoes(shoes);
-    }
-  };
+
   return (
     <div className="invent" value={search} onChange={handleinputchange}>
       <input type="text" className="search" />
