@@ -176,43 +176,48 @@ export const App = () => {
     setmodal(false);
   };
   const onOpen = () => {
+    if (showMenu) {
+      setShowmenu(false);
+    }
     setmodal((prev) => !prev);
   };
   return (
     <BrowserRouter>
-      <Navbar
-        onOpen={onOpen}
-        setMenu={setShowmenu}
-        Menu={showMenu}
-        setCart={setCart}
-        itemNo={itemNo}
-        cart={cart}
-      />
-      {walletmodal && <WalletModal onclose={onclose} />}
-      <main
-        style={{ marginTop: "5.3rem" }}
-        className={walletmodal ? "modaloverlay" : ""}
-      >
-        <Routes>
-          <Route path="/" element={<Landing shoes={grp} />} />
-          <Route path="/Shoe" element={<Inventory shoes={grp} />} />
-          <Route
-            path="/shoe/:id"
-            element={
-              <SingleShoe
-                setMenu={setShowmenu}
-                Menu={showMenu}
-                setCart={setCart}
-                itemNo={itemNo}
-                cart={cart}
-                shoes={grp}
-                setItemNo={setItemNo}
-              />
-            }
-          />
-          <Route path="/checkout" element={<Checkout cart={cart} />} />
-        </Routes>
-      </main>
+      <div className={walletmodal || showMenu ? "no-scroll App" : "App"}>
+        <Navbar
+          onOpen={onOpen}
+          setMenu={setShowmenu}
+          Menu={showMenu}
+          setCart={setCart}
+          itemNo={itemNo}
+          cart={cart}
+        />
+        {walletmodal && <WalletModal onclose={onclose} />}
+        <main
+          style={{ marginTop: "5.3rem" }}
+          className={walletmodal ? "modaloverlay" : ""}
+        >
+          <Routes>
+            <Route path="/" element={<Landing shoes={grp} />} />
+            <Route path="/Shoe" element={<Inventory shoes={grp} />} />
+            <Route
+              path="/shoe/:id"
+              element={
+                <SingleShoe
+                  setMenu={setShowmenu}
+                  Menu={showMenu}
+                  setCart={setCart}
+                  itemNo={itemNo}
+                  cart={cart}
+                  shoes={grp}
+                  setItemNo={setItemNo}
+                />
+              }
+            />
+            <Route path="/checkout" element={<Checkout cart={cart} />} />
+          </Routes>
+        </main>
+      </div>
     </BrowserRouter>
   );
 };

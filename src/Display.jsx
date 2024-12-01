@@ -7,25 +7,27 @@ import next from "./images/icon-next.svg";
 import prev from "./images/icon-previous.svg";
 
 const Display = ({ shoe }) => {
+  console.log(shoe);
   const [current, setCurrent] = useState(shoe[0]);
 
   const imageList = [pro1, pro2, pro3, pro4];
 
   const handleNext = () => {
-    const currentIndex = imageList.findIndex((i) => i === current);
+    const currentIndex = shoe.findIndex((i) => i === current);
+    console.log(currentIndex);
     if (currentIndex === imageList.length - 1) {
-      setCurrent(imageList[0]);
+      setCurrent(shoe[0]);
     } else {
-      setCurrent(imageList[currentIndex + 1]);
+      setCurrent(shoe[currentIndex + 1]);
     }
   };
 
   const handlePrev = () => {
-    const currentIndex = imageList.findIndex((i) => i === current);
+    const currentIndex = shoe.findIndex((i) => i === current);
     if (currentIndex === 0) {
-      setCurrent(imageList[imageList.length - 1]);
+      setCurrent(shoe[imageList.length - 1]);
     } else {
-      setCurrent(imageList[currentIndex - 1]);
+      setCurrent(shoe[currentIndex - 1]);
     }
   };
 

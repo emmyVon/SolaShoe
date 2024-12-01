@@ -206,9 +206,14 @@ nav::after {
   flex-basis: 2;
   gap: 1rem;
 }
+.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
 .modaloverlay {
   position: relative;
   opacity: 0.5;
+
   /* background-image: linear-gradient(to bottom rgba(199, 199, 199, 0.63), gray) !; */
   /* height: 100vh; */
 }
@@ -410,6 +415,9 @@ label,
   .container {
     width: 98%;
   }
+  section {
+    height: auto;
+  }
   .photo-side > div:nth-child(2) {
     display: none;
   }
@@ -421,11 +429,22 @@ label,
     gap: 2rem;
     font-weight: 700;
     top: 0;
-    height: 100vh;
+    left: 0;
+    height: 50vh;
+    overflow: hidden;
     width: 50%;
     background-color: #fff;
     padding: 10px;
     z-index: 3;
+    color: goldenrod;
+  }
+  .nav-left a {
+    color: goldenrod;
+    font-weight: 500;
+  }
+
+  .nav-left a:hover::after {
+    display: none;
   }
   .showmenu {
     display: flex;
@@ -464,6 +483,25 @@ label,
     justify-content: space-between;
   }
   .button-container {
+    flex-direction: column;
+  }
+
+  .wallet-con {
+    left: 5%;
+    width: 90%;
+  }
+  .landing-con {
+    padding-block: 2rem;
+    grid-template-columns: 1fr;
+  }
+  .landing img {
+    display: none;
+  }
+  .about_con {
+    grid-template-columns: 1fr;
+  }
+
+  .slider {
     flex-direction: column;
   }
   /* .button-container button{
