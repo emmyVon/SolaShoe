@@ -5,6 +5,7 @@ import twitter from "../images/icon-twitter.svg";
 import insta from "../images/icon-instagram.svg";
 import logo from "../images/logo.svg";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Landing = ({ shoes }) => {
   const [displayedShoes, setDisplayedShoes] = useState([]);
@@ -50,7 +51,7 @@ export const Landing = ({ shoes }) => {
                   <div>
                     <p>{title}</p>
                     <p>&#x20A6;{shoe[0].price}</p>
-                    <button>buy now</button>
+                    <Link to={`shoe/${title}`}>buy now</Link>
                   </div>
                 </article>
               );
